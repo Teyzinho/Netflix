@@ -1,10 +1,14 @@
 import React from 'react'
 import Lista from './componentes/Lista'
+import Banner from './componentes/Banner'
 import categories from './api'
+import './Netflix.css'
+
 
 function Netflix() {
     return (
         <div>
+            <Banner />
             {categories.map((categoria) => {
                 return (
                     <Lista

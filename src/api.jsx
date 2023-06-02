@@ -36,6 +36,11 @@ const categorias = [
         title: "Documentários",
         path: `/discover/tv?language=pt-BR&page=1&sort_by=popularity.desc&with_genres=99&api_key=${API_KEY}`,
     },
+    {
+        name: "netflixOriginals",
+        title: "Originais Netflix",
+        path: `/discover/tv?api_key=${API_KEY}&with_networks=213&language=pt-BR`,
+      },
 ];
 
 export const getMovies = async (path) => {
