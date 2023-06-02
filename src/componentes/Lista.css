@@ -1,21 +1,27 @@
 .container{
     position: relative;
-    margin-left: 5vw;
+    /* margin-left: 5vw; */
     z-index: 1;
 }
 
 .container h1{
     font-size: 1.5rem;
     font-weight: 600;
+    margin-left: 5vw;
 }
 
 .filme-card{
     display: flex;
     gap: 0.5vw;
+    overflow-y: visible;
+    overflow-x: auto;
+
+    white-space: nowrap;
+    scroll-behavior: smooth;
 }
 
 .filme-card::-webkit-scrollbar{
-    /* display: none; */
+    display: none;
 }
 
 .filme-card div{
@@ -25,7 +31,6 @@
 .filme-card img{
     cursor: pointer;
     border-radius: 5px;
-    width: 15vw;
     height: 8.5vw;
     object-fit: cover;
 }
@@ -34,30 +39,65 @@
     transform: scale(1.08);
 }
 
+.arrow-btn{
+    bottom: 0.24vw;
+    position: absolute;
+    height: 8.5vw;
+    width: 3vw;
+    height: 8.5vw;
+    border: none;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.btn-right{
+    right: 0;
+}
+
+.container:hover button{
+    opacity: 1;
+}
+
+.arrow-btn:hover svg{
+ scale: 1.1;
+}
+
+
 @media screen and (max-width:1400px){
     .filme-card img{
-        width: 21vw;
+        height: 13.5vw;
+    }
+    .arrow-btn{
         height: 13.5vw;
     }
 }
 
 @media screen and (max-width:1100px){
     .filme-card img{
-        width: 26vw;
+        height: 18.5vw;
+    }
+    .arrow-btn{
         height: 18.5vw;
     }
 }
 
 @media screen and (max-width:800px){
     .filme-card img{
-        width: 31vw;
+        height: 23.5vw;
+    }
+    .arrow-btn{
         height: 23.5vw;
     }
 }
 
 @media screen and (max-width:500px){
     .filme-card img{
-        width: 45vw;
+        height: 28.5vw;
+    }
+    .arrow-btn{
         height: 28.5vw;
     }
 }

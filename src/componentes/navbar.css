@@ -1,0 +1,40 @@
+.navBar-container {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 999;
+    padding: 0 5vw;
+
+}
+
+.navBar-container div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.left img {
+    cursor: pointer;
+    width: 100px;
+}
+
+.navBar-container.nav-black {
+    background: rgb(20, 20, 20);
+    background-image: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.7) 10%,
+            transparent);
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+
+.navBar-container.nav-transparent {
+    background: rgb(0, 0, 0, 0);
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+
+@media screen and (max-width:500px) {
+    .left img {
+        width: 50px;
+    }
+}
