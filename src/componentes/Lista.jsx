@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
+import ReactPlayer from "react-player";
+import axios from 'axios';
 import { getMovies } from "../api";
 import './Lista.css';
 
 const urlImage = "https://image.tmdb.org/t/p/original";
 
-function Lista({ title, path }) {
+function Lista({ title, path, onOpen }) {
   const [filmes, setFilmes] = useState([]);
   const divRef = useRef(null);
   const [windowSize, setWindowSize] = useState(window.innerWidth)
@@ -12,6 +14,7 @@ function Lista({ title, path }) {
   const [qtdeImg, setQtdeImg] = useState(6);
   const [vw50, setVw50] = useState(0);
 
+  //Função que mostra uma certa quantidade de imagens da lista dependendo do tamanho da tela
   useEffect(() => {
     const imgResize = () => {
       const screenWidth = window.innerWidth;
@@ -39,6 +42,7 @@ function Lista({ title, path }) {
     };
   }, []);
 
+  //Pega a info dos filmes
   useEffect(() => {
     const fetchMovies = async (_path) => {
       try {
@@ -54,35 +58,47 @@ function Lista({ title, path }) {
 
   const handleScroll = (scrollOffset) => {
     if (divRef.current) {
+
       divRef.current.scrollLeft += scrollOffset;
     }
   };
 
+
+
+
+
   return (
     <div className="container">
+
+
       <h1>{title}</h1>
       <div className="filme-card" ref={divRef}>
         {filmes?.map(filme => (
-          <div key={filme.id}>
+          <div
+            key={filme.id}>
             <img
               style={{ width: `${windowSize / qtdeImg}px` }}
               src={`${urlImage}${filme.backdrop_path || filme.poster_path}`}
               alt={filme.name}
+            // onClick={() => movieOnclick(filme)}
+            onClick={() => onOpen(filme)}
             />
           </div>
         ))}
 
       </div>
       <button className="arrow-btn btn-left" onClick={() => handleScroll(-windowSize)}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
         </svg>
       </button>
       <button className="arrow-btn btn-right" onClick={() => handleScroll(windowSize + vw50 * qtdeImg)}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
         </svg>
       </button>
+
+
     </div>
   );
 }
