@@ -1,2 +1,2 @@
 # Netflix
-Um Projeto em react Vite com base no site "Netflix" utilizando APIS, não foi utilizado nenhum framework nest Projeto.
+Um projeto em React Vite baseado no site 'Netflix', utilizando APIs. Nenhum framework foi utilizado neste projeto.
